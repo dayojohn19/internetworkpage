@@ -50,7 +50,7 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(to bottom right, #2563eb, #9333ea);
+            background: linear-gradient(to bottom right, #059669, #047857);
             border-radius: 0.5rem;
             display: flex;
             align-items: center;
@@ -85,7 +85,7 @@
 
         .btn {
             padding: 0.5rem 1rem;
-            background: #2563eb;
+            background: #059669;
             color: white;
             border: none;
             border-radius: 0.375rem;
@@ -96,7 +96,7 @@
         }
 
         .btn:hover {
-            background: #1d4ed8;
+            background: #047857;
         }
 
         .btn-lg {
@@ -106,7 +106,7 @@
 
         .btn-outline {
             background: transparent;
-            color: #2563eb;
+            color: #059669;
             border: 1px solid #d1d5db;
         }
 
@@ -116,36 +116,48 @@
 
         /* Hero Section */
         .hero {
-            padding: 5rem 1rem;
+            position: relative;
+            padding: 6rem 1rem;
             text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://picsum.photos/id/1018/1920/1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            color: white;
+            -webkit-text-fill-color: white;
+            background: none;
+            font-size: 3.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .badge {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: #f3f4f6;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 9999px;
             font-size: 0.875rem;
             margin-bottom: 1rem;
-        }
-
-        .hero h2 {
-            font-size: 3.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #2563eb, #9333ea);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: #4b5563;
-            margin-bottom: 2rem;
-            max-width: 48rem;
-            margin-left: auto;
-            margin-right: auto;
+            backdrop-filter: blur(4px);
         }
 
         .button-group {
@@ -157,7 +169,7 @@
 
         /* Stats Section */
         .stats {
-            background: white;
+            background: linear-gradient(to bottom, #f0fdf4, #ffffff);
             padding: 3rem 1rem;
         }
 
@@ -174,7 +186,7 @@
         .stat-value {
             font-size: 2.25rem;
             font-weight: 700;
-            color: #2563eb;
+            color: #059669;
             margin-bottom: 0.5rem;
         }
 
@@ -185,17 +197,18 @@
         /* Services Section */
         .services {
             padding: 5rem 1rem;
+            background: linear-gradient(to bottom, #ffffff, #f0fdf4);
         }
 
         .pricing {
             padding: 5rem 1rem;
-            background: white;
+            background: linear-gradient(to bottom, #f0fdf4, #ffffff);
         }
 
         .price {
             font-size: 2rem;
             font-weight: 700;
-            color: #2563eb;
+            color: #059669;
             margin: 1rem 0;
         }
 
@@ -255,7 +268,7 @@
         .card-icon {
             width: 48px;
             height: 48px;
-            background: #dbeafe;
+            background: #d1fae5;
             border-radius: 0.5rem;
             display: flex;
             align-items: center;
@@ -266,7 +279,7 @@
         .card-icon svg {
             width: 24px;
             height: 24px;
-            stroke: #2563eb;
+            stroke: #059669;
         }
 
         .card h4 {
@@ -282,7 +295,7 @@
 
         /* About Section */
         .about {
-            background: white;
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
             padding: 5rem 1rem;
         }
 
@@ -335,7 +348,7 @@
         }
 
         .approach-card {
-            background: linear-gradient(to bottom right, #eff6ff, #faf5ff);
+            background: linear-gradient(to bottom right, #ecfdf5, #f0fdf4);
             border-radius: 0.5rem;
             padding: 1.5rem;
         }
@@ -364,7 +377,7 @@
         .step-number {
             width: 32px;
             height: 32px;
-            background: #2563eb;
+            background: #059669;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -387,6 +400,7 @@
         /* Contact Section */
         .contact {
             padding: 5rem 1rem;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
         }
 
         .contact-grid {
@@ -404,7 +418,7 @@
         .contact-icon {
             width: 48px;
             height: 48px;
-            background: #dbeafe;
+            background: #d1fae5;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -471,7 +485,7 @@
         .footer-logo-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(to bottom right, #2563eb, #9333ea);
+            background: linear-gradient(to bottom right, #059669, #047857);
             border-radius: 0.5rem;
             display: flex;
             align-items: center;
@@ -672,6 +686,7 @@
                     </ul>
                 </div>
                 <div>
+                    <img src="https://picsum.photos/id/1005/800/600" alt="Professional consultancy team" style="width: 100%; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); margin-bottom: 1.5rem;">
                     <div class="approach-card">
                         <h4>Our Approach</h4>
                         <div class="approach-step"><div class="step-number">1</div><div class="step-content"><h5>Consultation</h5><p>Understanding your specific needs and goals</p></div></div>
@@ -692,15 +707,15 @@
             </div>
             <div class="contact-grid">
                 <div class="card contact-card">
-                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 7 10-7"></path></svg></div>
+                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 7 10-7"></path></svg></div>
                     <h4>Email</h4><p>contact@iqconsultancy.com</p>
                 </div>
                 <div class="card contact-card">
-                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
                     <h4>Phone</h4><p>+1 (555) 123-4567</p>
                 </div>
                 <div class="card contact-card">
-                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
                     <h4>Location</h4><p>Available Worldwide</p>
                 </div>
             </div>
