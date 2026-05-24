@@ -4,18 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internetwork Quant Consultancy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --ink: #0f172a;
+            --muted: #526072;
+            --line: rgba(15, 23, 42, 0.1);
+            --primary: #059669;
+            --primary-dark: #047857;
+            --accent: #2563eb;
+            --title-gradient: linear-gradient(135deg, #0f172a 0%, #047857 48%, #2563eb 100%);
+            --brand-gradient: linear-gradient(135deg, #059669 0%, #0ea5e9 55%, #2563eb 100%);
+            --warm-gradient: linear-gradient(135deg, #ecfdf5 0%, #eff6ff 52%, #fffbeb 100%);
+            --shadow-sm: 0 10px 24px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.16);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(to bottom, #ffffff, #f9fafb);
+            color: var(--ink);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 45%, #ffffff 100%);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Sora', 'Inter', sans-serif;
+            letter-spacing: 0;
+            color: var(--ink);
         }
 
         .container {
@@ -26,12 +59,13 @@
 
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e5e7eb;
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.9);
             position: sticky;
             top: 0;
             z-index: 50;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
         }
 
         .header-content {
@@ -44,27 +78,42 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(to bottom right, #059669, #047857);
-            border-radius: 0.5rem;
+            background: var(--brand-gradient);
+            border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 14px 32px rgba(5, 150, 105, 0.28);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: translateY(-2px) rotate(-3deg);
+            box-shadow: 0 18px 38px rgba(37, 99, 235, 0.24);
         }
 
         .logo-text h1 {
             font-size: 1.25rem;
-            font-weight: 700;
+            font-weight: 800;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .logo-text p {
             font-size: 0.75rem;
-            color: #4b5563;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         nav {
@@ -74,29 +123,63 @@
         }
 
         nav a {
-            color: #374151;
+            position: relative;
+            color: #334155;
             text-decoration: none;
-            transition: color 0.2s;
+            font-size: 0.93rem;
+            font-weight: 600;
+            transition: color 0.25s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.35rem;
+            height: 2px;
+            background: var(--brand-gradient);
+            border-radius: 999px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.25s ease;
         }
 
         nav a:hover {
-            color: #111827;
+            color: var(--ink);
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+        }
+
+        nav a:focus-visible,
+        .btn:focus-visible {
+            outline: 3px solid rgba(14, 165, 233, 0.36);
+            outline-offset: 4px;
         }
 
         .btn {
             padding: 0.5rem 1rem;
-            background: #059669;
+            background: var(--brand-gradient);
             color: white;
             border: none;
-            border-radius: 0.375rem;
+            border-radius: 0.5rem;
             cursor: pointer;
             font-size: 0.875rem;
-            font-weight: 500;
-            transition: background 0.2s;
+            font-weight: 700;
+            box-shadow: 0 12px 24px rgba(5, 150, 105, 0.22);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
         }
 
         .btn:hover {
-            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 18px 34px rgba(37, 99, 235, 0.26);
+            filter: saturate(1.08);
+        }
+
+        .btn:active {
+            transform: translateY(0);
         }
 
         .btn-lg {
@@ -105,59 +188,81 @@
         }
 
         .btn-outline {
-            background: transparent;
-            color: #059669;
-            border: 1px solid #d1d5db;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.15);
         }
 
         .btn-outline:hover {
-            background: #f9fafb;
+            background: white;
+            color: var(--accent);
         }
 
         /* Hero Section */
         .hero {
             position: relative;
-            padding: 6rem 1rem;
+            min-height: 78vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 1rem;
             text-align: center;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://picsum.photos/id/1018/1920/1080');
+            overflow: hidden;
+            background-image: linear-gradient(135deg, rgba(2, 6, 23, 0.74), rgba(4, 120, 87, 0.62) 45%, rgba(37, 99, 235, 0.58)), url('https://picsum.photos/id/1018/1920/1080');
             background-size: cover;
             background-position: center;
             color: white;
         }
 
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.36) 100%);
+            pointer-events: none;
+        }
+
         .hero .container {
             position: relative;
             z-index: 1;
+            animation: fadeUp 0.8s ease both;
         }
 
         .hero h2 {
-            color: white;
-            -webkit-text-fill-color: white;
-            background: none;
-            font-size: 3.75rem;
-            font-weight: 700;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            background: linear-gradient(135deg, #ffffff 0%, #d1fae5 42%, #bfdbfe 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: clamp(2.5rem, 7vw, 5.35rem);
+            line-height: 1.04;
+            font-weight: 800;
             margin-bottom: 1.5rem;
+            text-shadow: 0 20px 52px rgba(0, 0, 0, 0.28);
         }
 
         .hero p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.25rem;
+            font-size: clamp(1.05rem, 2vw, 1.28rem);
             margin-bottom: 2rem;
             max-width: 48rem;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 500;
         }
 
         .badge {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
+            padding: 0.45rem 0.85rem;
             background: rgba(255, 255, 255, 0.15);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 9999px;
             font-size: 0.875rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(12px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 14px 34px rgba(15, 23, 42, 0.22);
         }
 
         .button-group {
@@ -169,7 +274,7 @@
 
         /* Stats Section */
         .stats {
-            background: linear-gradient(to bottom, #f0fdf4, #ffffff);
+            background: var(--warm-gradient);
             padding: 3rem 1rem;
         }
 
@@ -181,34 +286,52 @@
 
         .stat-item {
             text-align: center;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: var(--shadow-sm);
         }
 
         .stat-value {
             font-size: 2.25rem;
             font-weight: 700;
-            color: #059669;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
             margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            color: #4b5563;
+            color: var(--muted);
+            font-weight: 600;
         }
 
         /* Services Section */
         .services {
             padding: 5rem 1rem;
-            background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 52%, #ecfdf5 100%);
         }
 
         .pricing {
             padding: 5rem 1rem;
-            background: linear-gradient(to bottom, #f0fdf4, #ffffff);
+            background: linear-gradient(180deg, #ecfdf5 0%, #eff6ff 48%, #ffffff 100%);
         }
 
         .price {
             font-size: 2rem;
             font-weight: 700;
-            color: #059669;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
             margin: 1rem 0;
         }
 
@@ -222,11 +345,12 @@
             margin-top: 1rem;
             list-style: none;
             font-size: 0.875rem;
-            color: #6b7280;
+            color: var(--muted);
         }
 
         .feature-list-pricing li {
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.45rem;
+            font-weight: 600;
         }
 
         .section-header {
@@ -235,16 +359,24 @@
         }
 
         .section-header h3 {
-            font-size: 2.25rem;
-            font-weight: 700;
+            display: inline-block;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            line-height: 1.12;
+            font-weight: 800;
             margin-bottom: 1rem;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .section-header p {
-            font-size: 1.25rem;
-            color: #4b5563;
+            font-size: 1.12rem;
+            color: var(--muted);
             max-width: 32rem;
             margin: 0 auto;
+            font-weight: 500;
         }
 
         .services-grid {
@@ -254,26 +386,53 @@
         }
 
         .card {
-            background: white;
-            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid var(--line);
             border-radius: 0.5rem;
             padding: 1.5rem;
-            transition: box-shadow 0.2s;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--brand-gradient);
+            opacity: 0;
+            transition: opacity 0.28s ease;
         }
 
         .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-6px);
+            border-color: rgba(5, 150, 105, 0.28);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card:hover::before {
+            opacity: 1;
         }
 
         .card-icon {
             width: 48px;
             height: 48px;
-            background: #d1fae5;
+            background: linear-gradient(135deg, #d1fae5 0%, #dbeafe 100%);
             border-radius: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1rem;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.06) rotate(-3deg);
+            box-shadow: 0 14px 30px rgba(5, 150, 105, 0.18);
         }
 
         .card-icon svg {
@@ -286,16 +445,33 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: #102033;
         }
 
         .card p {
-            color: #6b7280;
+            color: var(--muted);
             font-size: 0.875rem;
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card p {
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-interest {
+            align-self: flex-start;
+            margin-top: auto;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
         }
 
         /* About Section */
         .about {
-            background: linear-gradient(to bottom, #ffffff, #f8fafc);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
             padding: 5rem 1rem;
         }
 
@@ -307,14 +483,30 @@
         }
 
         .about h3 {
-            font-size: 2.25rem;
-            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            line-height: 1.12;
+            font-weight: 800;
             margin-bottom: 1.5rem;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .about p {
-            color: #4b5563;
+            color: var(--muted);
             margin-bottom: 1rem;
+        }
+
+        .about img {
+            transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+        }
+
+        .about img:hover {
+            transform: translateY(-4px);
+            filter: saturate(1.08) contrast(1.03);
+            box-shadow: 0 22px 48px rgba(15, 23, 42, 0.16) !important;
         }
 
         .feature-list {
@@ -327,12 +519,14 @@
             align-items: center;
             gap: 0.75rem;
             margin-bottom: 0.75rem;
+            color: #1f2937;
+            font-weight: 600;
         }
 
         .feature-bullet {
             width: 24px;
             height: 24px;
-            background: #dcfce7;
+            background: linear-gradient(135deg, #dcfce7, #dbeafe);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -343,14 +537,16 @@
         .feature-bullet-inner {
             width: 8px;
             height: 8px;
-            background: #16a34a;
+            background: var(--brand-gradient);
             border-radius: 50%;
         }
 
         .approach-card {
-            background: linear-gradient(to bottom right, #ecfdf5, #f0fdf4);
+            background: var(--warm-gradient);
+            border: 1px solid rgba(5, 150, 105, 0.12);
             border-radius: 0.5rem;
             padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
         }
 
         .approach-card h4 {
@@ -377,7 +573,7 @@
         .step-number {
             width: 32px;
             height: 32px;
-            background: #059669;
+            background: var(--brand-gradient);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -385,6 +581,7 @@
             justify-content: center;
             font-weight: 700;
             flex-shrink: 0;
+            box-shadow: 0 10px 22px rgba(5, 150, 105, 0.22);
         }
 
         .step-content h5 {
@@ -394,13 +591,13 @@
 
         .step-content p {
             font-size: 0.875rem;
-            color: #4b5563;
+            color: var(--muted);
         }
 
         /* Contact Section */
         .contact {
             padding: 5rem 1rem;
-            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
         }
 
         .contact-grid {
@@ -415,10 +612,14 @@
             text-align: center;
         }
 
+        .contact-card p {
+            overflow-wrap: anywhere;
+        }
+
         .contact-icon {
             width: 48px;
             height: 48px;
-            background: #d1fae5;
+            background: linear-gradient(135deg, #d1fae5 0%, #dbeafe 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -433,13 +634,121 @@
         }
 
         .contact-card p {
-            color: #6b7280;
+            color: var(--muted);
             font-size: 0.875rem;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            gap: 1.5rem;
+            align-items: flex-start;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        .contact-layout .contact-grid {
+            grid-template-columns: 1fr;
+            max-width: none;
+            margin: 0;
+        }
+
+        .inquiry-form h4 {
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .inquiry-form > p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .inquiry-form.is-targeted {
+            border-color: rgba(14, 165, 233, 0.45);
+            box-shadow: 0 24px 60px rgba(14, 165, 233, 0.18);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .field-full {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            color: #334155;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(15, 23, 42, 0.13);
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.94);
+            color: var(--ink);
+            font: inherit;
+            padding: 0.78rem 0.9rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .field textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: rgba(14, 165, 233, 0.7);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.13);
+        }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+        }
+
+        .form-status {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .form-status.success {
+            color: #047857;
+        }
+
+        .form-status.error {
+            color: #b91c1c;
+        }
+
+        .btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.68;
+            transform: none;
+            filter: saturate(0.7);
         }
 
         /* Footer */
         footer {
-            background: #111827;
+            background: linear-gradient(135deg, #0f172a 0%, #102033 52%, #053b35 100%);
             color: white;
             padding: 3rem 1rem;
         }
@@ -468,11 +777,12 @@
             color: #9ca3af;
             text-decoration: none;
             font-size: 0.875rem;
-            transition: color 0.2s;
+            transition: color 0.2s ease, padding-left 0.2s ease;
         }
 
         .footer-section a:hover {
             color: white;
+            padding-left: 0.18rem;
         }
 
         .footer-logo {
@@ -485,8 +795,8 @@
         .footer-logo-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(to bottom right, #059669, #047857);
-            border-radius: 0.5rem;
+            background: var(--brand-gradient);
+            border-radius: 0.65rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -499,7 +809,7 @@
 
         .footer-divider {
             height: 1px;
-            background: #374151;
+            background: rgba(148, 163, 184, 0.28);
             margin: 2rem 0;
         }
 
@@ -517,7 +827,7 @@
                 grid-template-columns: 1fr 1fr;
             }
             .hero h2 {
-                font-size: 4rem;
+                font-size: clamp(3.75rem, 6vw, 5.35rem);
             }
         }
 
@@ -526,7 +836,37 @@
                 display: none;
             }
             .hero h2 {
-                font-size: 2.5rem;
+                font-size: clamp(2.35rem, 11vw, 3rem);
+            }
+            .contact-layout,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -588,35 +928,41 @@
                 <p>Comprehensive solutions tailored to your unique requirements</p>
             </div>
             <div class="services-grid">
-                <div class="card">
+                <div class="card service-card">
                     <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
                     <h4>Website Development</h4>
                     <p>Custom-built, responsive websites tailored to your business needs with modern technology stack.</p>
+                    <button type="button" class="btn btn-interest" data-service="Website Development">Interested</button>
                 </div>
-                <div class="card">
+                <div class="card service-card">
                     <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></div>
                     <h4>Website Maintenance</h4>
                     <p>Ongoing support, updates, and optimization to keep your website running smoothly and securely.</p>
+                    <button type="button" class="btn btn-interest" data-service="Website Maintenance">Interested</button>
                 </div>
-                <div class="card">
+                <div class="card service-card">
                     <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
                     <h4>Exchange Advisory</h4>
                     <p>Expert quantitative analysis and strategic advice for forex, stocks, and cryptocurrency markets.</p>
+                    <button type="button" class="btn btn-interest" data-service="Exchange Advisory">Interested</button>
                 </div>
-                <div class="card">
+                <div class="card service-card">
                     <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg></div>
                     <h4>Market Analysis</h4>
                     <p>In-depth market research and data-driven insights to inform your trading decisions.</p>
+                    <button type="button" class="btn btn-interest" data-service="Market Analysis">Interested</button>
                 </div>
-                <div class="card">
+                <div class="card service-card">
                     <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
                     <h4>Risk Management</h4>
                     <p>Comprehensive risk assessment and mitigation strategies for your investment portfolio.</p>
+                    <button type="button" class="btn btn-interest" data-service="Risk Management">Interested</button>
                 </div>
-                <div class="card">
+                <div class="card service-card">
                     <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
                     <h4>Performance Optimization</h4>
                     <p>Technical optimization for both web properties and trading strategies to maximize returns.</p>
+                    <button type="button" class="btn btn-interest" data-service="Performance Optimization">Interested</button>
                 </div>
             </div>
         </div>
@@ -705,19 +1051,91 @@
                 <h3>Get In Touch</h3>
                 <p>Ready to transform your business? Let's start a conversation.</p>
             </div>
-            <div class="contact-grid">
-                <div class="card contact-card">
-                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 7 10-7"></path></svg></div>
-                    <h4>Email</h4><p>john.dayo@internetworkinformationtechnologyconsultancy.online</p>
+            <div class="contact-layout">
+                <div class="contact-grid">
+                    <div class="card contact-card">
+                        <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 7 10-7"></path></svg></div>
+                        <h4>Email</h4><p>john.dayo@internetworkinformationtechnologyconsultancy.online</p>
+                    </div>
+                    <div class="card contact-card">
+                        <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+                        <h4>Phone</h4><p>+639 (765) 51-4253</p>
+                    </div>
+                    <div class="card contact-card">
+                        <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+                        <h4>Location</h4><p>1984 Pilar Hidalgo Lim, Malate, Manila, 1004 Metro Manila</p>
+                    </div>
                 </div>
-                <div class="card contact-card">
-                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-                    <h4>Phone</h4><p>+639 (765) 51-4253</p>
-                </div>
-                <div class="card contact-card">
-                    <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
-                    <h4>Location</h4><p>1984 Pilar Hidalgo Lim, Malate, Manila, 1004 Metro Manila</p>
-                </div>
+
+                <form id="inquiry-form" class="card inquiry-form">
+                    <h4>Send an Inquiry</h4>
+                    <p>Tell us what you need and we will get back to you.</p>
+
+                    <input type="hidden" name="from_name" id="from_name">
+                    <input type="hidden" name="reply_to" id="reply_to">
+                    <input type="hidden" name="to_name" id="to_name" value="John Dayo">
+                    <input type="hidden" name="to_send_email" id="to_send_email" value="john.dayo@paratara.com">
+                    <input type="hidden" name="resort_id" id="resort_id" value="internetwork-quant">
+                    <input type="hidden" name="room_id" id="room_id" value="consultancy-inquiry">
+                    <input type="hidden" name="month" id="month">
+                    <input type="hidden" name="year" id="year">
+                    <input type="hidden" name="room_name" id="room_name">
+
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="guest_name">Full Name</label>
+                            <input type="text" name="guest_name" id="guest_name" autocomplete="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="guest_email">Email Address</label>
+                            <input type="email" name="guest_email" id="guest_email" autocomplete="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="guest_phone">Phone Number</label>
+                            <input type="tel" name="guest_phone" id="guest_phone" autocomplete="tel">
+                        </div>
+                        <div class="field">
+                            <label for="room_package">Service Needed</label>
+                            <select name="room_package" id="room_package" required>
+                                <option value="">Select a service</option>
+                                <option value="Website Development">Website Development</option>
+                                <option value="Website with CRM & CRUD">Website with CRM & CRUD</option>
+                                <option value="Website Maintenance">Website Maintenance</option>
+                                <option value="Computerized Accounting System">Computerized Accounting System</option>
+                                <option value="Exchange Advisory">Exchange Advisory</option>
+                                <option value="Market Analysis">Market Analysis</option>
+                                <option value="Risk Management">Risk Management</option>
+                                <option value="Performance Optimization">Performance Optimization</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="startdate">Preferred Start Date</label>
+                            <input type="date" name="startdate" id="startdate">
+                        </div>
+                        <div class="field">
+                            <label for="enddate">Target End Date</label>
+                            <input type="date" name="enddate" id="enddate">
+                        </div>
+                        <div class="field field-full">
+                            <label for="totalcost">Estimated Budget</label>
+                            <input type="text" name="totalcost" id="totalcost" placeholder="Example: Php 15,000">
+                        </div>
+                        <div class="field field-full">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" required></textarea>
+                        </div>
+                        <div class="field field-full">
+                            <label for="special_requests">Special Requests</label>
+                            <textarea name="special_requests" id="special_requests"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="button" class="btn btn-lg">Send Email</button>
+                        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -765,5 +1183,87 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        const EMAILJS_SERVICE_ID = 'service_jv335d7';
+        const EMAILJS_TEMPLATE_ID = 'template_hzlk188';
+        const EMAILJS_PUBLIC_KEY = 'kPR5fCmH0j3E0NSyr';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('inquiry-form');
+            const submitButton = document.getElementById('button');
+            const status = document.getElementById('form-status');
+
+            if (!form || !submitButton || !status) {
+                return;
+            }
+
+            if (window.emailjs) {
+                window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+            }
+
+            const fields = form.elements;
+            const interestButtons = document.querySelectorAll('.btn-interest[data-service]');
+
+            const setStatus = (message, type = '') => {
+                status.textContent = message;
+                status.className = type ? `form-status ${type}` : 'form-status';
+            };
+
+            interestButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const serviceName = button.dataset.service;
+
+                    fields.room_package.value = serviceName;
+                    fields.room_name.value = serviceName;
+
+                    if (!fields.message.value.trim() || fields.message.value.startsWith('I am interested in')) {
+                        fields.message.value = `I am interested in ${serviceName}. Please send me more details.`;
+                    }
+
+                    form.classList.add('is-targeted');
+                    setStatus(`Selected ${serviceName}. Please complete your contact details.`);
+                    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    window.setTimeout(() => {
+                        fields.guest_name.focus({ preventScroll: true });
+                        form.classList.remove('is-targeted');
+                    }, 650);
+                });
+            });
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                if (!window.emailjs) {
+                    setStatus('Email service failed to load. Please email us directly.', 'error');
+                    return;
+                }
+
+                const startDate = fields.startdate.value ? new Date(`${fields.startdate.value}T00:00:00`) : new Date();
+                fields.from_name.value = fields.guest_name.value.trim();
+                fields.reply_to.value = fields.guest_email.value.trim();
+                fields.room_name.value = fields.room_package.value || 'General Inquiry';
+                fields.month.value = startDate.toLocaleString('en-US', { month: 'long' });
+                fields.year.value = String(startDate.getFullYear());
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                setStatus('Sending your message...');
+
+                try {
+                    await window.emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+                    form.reset();
+                    setStatus('Message sent successfully.', 'success');
+                } catch (error) {
+                    const errorMessage = error && (error.text || error.message) ? error.text || error.message : 'Please try again.';
+                    setStatus(`Unable to send message. ${errorMessage}`, 'error');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Email';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
