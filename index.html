@@ -1073,13 +1073,14 @@
 
                     <input type="hidden" name="from_name" id="from_name">
                     <input type="hidden" name="reply_to" id="reply_to">
-                    <input type="hidden" name="to_name" id="to_name" value="John Dayo">
+                    <input type="hidden" name="to_name" id="to_name" value="john.dayo@paratara.com">
                     <input type="hidden" name="to_send_email" id="to_send_email" value="john.dayo@paratara.com">
                     <input type="hidden" name="resort_id" id="resort_id" value="internetwork-quant">
                     <input type="hidden" name="room_id" id="room_id" value="consultancy-inquiry">
                     <input type="hidden" name="month" id="month">
                     <input type="hidden" name="year" id="year">
                     <input type="hidden" name="room_name" id="room_name">
+                    <input type="hidden" name="message" id="email_message">
 
                     <div class="form-grid">
                         <div class="field">
@@ -1122,8 +1123,8 @@
                             <input type="text" name="totalcost" id="totalcost" placeholder="Example: Php 15,000">
                         </div>
                         <div class="field field-full">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" required></textarea>
+                            <label for="customer_message">Message</label>
+                            <textarea name="customer_message" id="customer_message" required></textarea>
                         </div>
                         <div class="field field-full">
                             <label for="special_requests">Special Requests</label>
@@ -1210,6 +1211,32 @@
                 status.className = type ? `form-status ${type}` : 'form-status';
             };
 
+            const getFieldValue = (fieldName) => {
+                const field = fields[fieldName];
+                return field && field.value.trim() ? field.value.trim() : 'Not provided';
+            };
+
+            const buildEmailMessage = () => [
+                'New Internetwork Quant Inquiry',
+                '',
+                `Name: ${getFieldValue('guest_name')}`,
+                `Email: ${getFieldValue('guest_email')}`,
+                `Phone: ${getFieldValue('guest_phone')}`,
+                `Service Needed: ${getFieldValue('room_package')}`,
+                `Preferred Start Date: ${getFieldValue('startdate')}`,
+                `Target End Date: ${getFieldValue('enddate')}`,
+                `Estimated Budget: ${getFieldValue('totalcost')}`,
+                '',
+                'Message:',
+                getFieldValue('customer_message'),
+                '',
+                'Special Requests:',
+                getFieldValue('special_requests'),
+                '',
+                `Inquiry Reference: ${getFieldValue('room_id')}`,
+                `Submitted: ${new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}`
+            ].join('\n');
+
             interestButtons.forEach((button) => {
                 button.addEventListener('click', () => {
                     const serviceName = button.dataset.service;
@@ -1217,8 +1244,8 @@
                     fields.room_package.value = serviceName;
                     fields.room_name.value = serviceName;
 
-                    if (!fields.message.value.trim() || fields.message.value.startsWith('I am interested in')) {
-                        fields.message.value = `I am interested in ${serviceName}. Please send me more details.`;
+                    if (!fields.customer_message.value.trim() || fields.customer_message.value.startsWith('I am interested in')) {
+                        fields.customer_message.value = `I am interested in ${serviceName}. Please send me more details.`;
                     }
 
                     form.classList.add('is-targeted');
@@ -1246,6 +1273,7 @@
                 fields.room_name.value = fields.room_package.value || 'General Inquiry';
                 fields.month.value = startDate.toLocaleString('en-US', { month: 'long' });
                 fields.year.value = String(startDate.getFullYear());
+                fields.message.value = buildEmailMessage();
 
                 submitButton.disabled = true;
                 submitButton.textContent = 'Sending...';
